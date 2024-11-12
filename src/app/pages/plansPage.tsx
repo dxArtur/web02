@@ -10,7 +10,7 @@ return (
       Oferecemos os melhores planos para você!
     </h2>
     <p className="mb-5 font-light text-gray-500 sm:text-xl">
-      Somos a líder em satisfação em pesquisa realizada pela Anatel
+      Somos a líder em satisfação segundo a Anatel
     </p>
   </div>
 
@@ -19,14 +19,14 @@ return (
     {plans.map((plan, index) => (
       <div
         key={index}
-        className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-xl xl:p-8"
+        className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-xl xl:p-8 transform transition-all duration-300 ease-in-out hover:scale-105"
       >
         <div className="mb-2">
-          <span className="bg-orange-600 text-white text-xs mr-2 font-bold px-2.5 py-0.5 ">
+          <span className="bg-orange-500 text-white text-xs mr-2 font-bold px-2.5 py-0.5">
             Promoção
           </span>
         </div>
-        <h3 className="mb-4 text-2xl font-bold text-orange-500">{plan.title}</h3>
+        <h3 className="mb-4 text-2xl font-bold text-white -blue-900 bg-orange-500">{plan.title}</h3>
 
         {/* Lista de funcionalidades */}
         <ul role="list" className="mb-8 space-y-4 text-left flex-grow">
@@ -51,8 +51,8 @@ return (
 
         {/* Verificação de Streaming */}
         {plan.streaming && (
-          <div className="flex flex-col items-start flex-grow">
-            <span className="font-semibold my-2">Streaming incluído:</span>
+          <div className="flex flex-col items-center flex-grow">
+            <span className="font-semibold my-2">Streaming incluído</span>
             <img
               alt="Streaming logo"
               className="w-[64px] mt-1"
@@ -62,7 +62,7 @@ return (
         )}
 
         {/* Apps inclusos */}
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-center">
           <span className="font-semibold my-2">Aplicativos incluídos</span>
           <div className="flex gap-1">
             {plan.apps.map((app, idx) => (
@@ -83,7 +83,7 @@ return (
         </div>
         <a
           href={plan.link}
-          className="self-end text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          className="self-center text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         >
           Assine Já
         </a>

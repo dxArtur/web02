@@ -36,7 +36,7 @@ export default function Navbar () {
           {/* Menu Desktop */}
           <div className="hidden sm:flex space-x-8 justify-center px-4 py-2">
             <a
-              href="/"
+              href="https://wa.me/558584848836?text=Ol%C3%A1%2C+Gostaria+de+contratar+o+serviço."
               className="text-white hover:bg-orange-600 px-3 py-2 rounded-md text-lg font-bold"
             >
               Contratar pelo Whatsapp
@@ -53,7 +53,7 @@ export default function Navbar () {
         <ul className="space-y-4 p-4">
           <li>
             <a
-              href="/"
+              href="https://wa.me/558584848836?text=Ol%C3%A1%2C+Gostaria+de+contratar+o+serviço."
               className="text-white hover:bg-orange-600 block px-3 py-2 rounded-md text-lg"
             >
               Contrate via Whatsapp
