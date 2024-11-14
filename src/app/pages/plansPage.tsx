@@ -146,6 +146,30 @@ return (
       </div>
     ))}
     </div>
+    <div className=" items-start m-16">
+      <ul className="list-disc pl-5">
+        <li>
+          <p className="mb-5 font-light text-gray-500 sm:text-base">
+            Ofertas válidas apenas onde temos caixa próxima e conseguimos atender na rede GPON;
+          </p>
+        </li>
+        <li>
+          <p className="mb-5 font-light text-gray-500 sm:text-base">
+            +1 IP fixo por R$ 50,00 adicional em cada pacote;
+          </p>
+        </li>
+        <li>
+          <p className="mb-5 font-light text-gray-500 sm:text-base">
+            Em caso de compra de IP fixo, autenticação é feita no ativo do cliente, sendo assim, não é fornecido roteador;
+          </p>
+        </li>
+        <li>
+          <p className="mb-5 font-light text-gray-500 sm:text-base">
+            Em caso de necessidade de RB ou equipamento para gerenciar o link, deve passar por viabilidade para ser considerado o custo do ativo;
+          </p>
+        </li>
+      </ul>
+    </div>
 </section>
 )
 }
