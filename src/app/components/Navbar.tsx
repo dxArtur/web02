@@ -7,15 +7,15 @@ export default function Navbar () {
   const toggleMenu = () => setIsOpen(!isOpen)
   
     return (
-      <nav className="bg-blue-800 shadow-md w-full">
+      <nav style={{ backgroundColor: '#2242d4' }} className="shadow-md w-full">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-24">
           {/* Logo */}
           <a href="/" className="flex items-center">
             <img
-              src="logobrisa.png"
+              src="brisanet-log.svg"
               alt="Logo da Brisanet"
-              className="w-auto" // Ajuste a altura da logo conforme necessário
+              className="w-auto " // Ajuste a altura da logo conforme necessário
             />
           </a>
 

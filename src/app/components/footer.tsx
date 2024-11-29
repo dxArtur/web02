@@ -32,8 +32,7 @@ export default function Footer () {
         <div className="flex flex-col">
           <h4 className="text-lg font-semibold mb-4 text-gray-300">Contato</h4>
           <ul className="space-y-3">
-            <li className="text-gray-500">📧 atendimento@g10solution.com.br</li>
-            <li className="text-gray-500">📞 +55 (85) 8484-8836</li>
+            <li className="text-gray-500">📞 +55 (85) 98484-8836</li>
           </ul>
         </div>
 

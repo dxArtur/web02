@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const figtree = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "G10 Solution",
-  description: "Soluções para sua empresa ",
+  title: "Assine a sua internet",
+  description: "Conectividade",
 };
 
 export default function RootLayout({
@@ -17,11 +17,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <head>
-
+        <link rel="icon" href="icon.png" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
       </head>
 
-      <body className={inter.className}>{children}</body>
+      <body className={figtree.className}>{children}</body>
     </html>
   );
 }
