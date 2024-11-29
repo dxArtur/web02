@@ -13,7 +13,7 @@ export const plansCorp = [
     link: "https://wa.me/558584848836?text=Ol%C3%A1%2C+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+o+plano+corporativo+de+500MB.",
   },
   {
-    title: "Oferta B2B 30GB",
+    title: "Oferta B2B 30G",
     features: [
       "Roaming 3GB fora da rede",
       "Ligações ilimitadas",
