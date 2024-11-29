@@ -5,6 +5,7 @@ import { plansHouse } from "../../../public/plansHOUSE";
 import { plansHouseII } from '@/../public/plansHouseII'
 import { plansCorp } from '@/../public/plansCorp'
 import { plansEnterprise } from '@/../public/plansEnterprise'
+import { plansFibra } from "../../../public/fibra";
 
 export default function PlansPage() {
 return (
@@ -35,8 +36,8 @@ return (
         className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-xl xl:p-8 transform transition-all duration-300 ease-in-out hover:scale-105"
       >
         <div className="mb-2">
-          <span style={{ backgroundColor: '#ff5022' }} className=" text-white text-xs mr-2 font-bold px-2.5 py-0.5">
-            Promoção
+          <span style={{ backgroundColor: '#ff5022' }} className=" text-white text-xl mr-2 font-bold fontpx-2.5 py-0.5 px-1">
+            PROMOÇÃO
           </span>
         </div>
         <h3 style={{ backgroundColor: '#ff5022' }} className="mb-4 text-2xl font-bold text-white -blue-900 ">{plan.title}</h3>
@@ -110,7 +111,7 @@ return (
       Planos residênciais em promoção
     </h2> */}
     <p className="mb-5 font-light text-gray-500 sm:text-xl">
-      Confira o restante de nossos planos residênciais!
+      Temos os melhores planos residênciais!
     </p>
   </div>
 
@@ -122,7 +123,7 @@ return (
       >
         <div className="mb-2">
           <span style={{ backgroundColor: '#ff5022' }} className=" text-white text-xs mr-2 font-bold px-2.5 py-0.5">
-            Promoção
+            Oferta
           </span>
         </div>
         <h3 style={{ backgroundColor: '#ff5022' }} className="mb-4 text-2xl font-bold text-white -blue-900 ">{plan.title}</h3>
@@ -182,10 +183,10 @@ return (
 
   <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
     <h2 style={{ backgroundColor: '#ff5022' }} className="my-10 mb-4 text-5xl tracking-tight font-extrabold">
-      Planos para sua empresa
+      Planos para sua empresa com descontos
     </h2>
     <p className="mb-5 font-light text-gray-500 sm:text-xl">
-      Conheça os nossos planos para empresas como a sua!
+      Fibra + Fixo + Chip Brisa
     </p>
   </div>
 
@@ -197,7 +198,7 @@ return (
       >
         <div className="mb-2">
           <span style={{ backgroundColor: '#ff5022' }} className="text-white text-xs mr-2 font-bold px-2.5 py-0.5">
-            Promoção
+            Melhor Oferta
           </span>
         </div>
         <h3 style={{ backgroundColor: '#ff5022' }} className="mb-4 text-2xl font-bold text-white -blue-900">{plan.title}</h3>
@@ -254,6 +255,88 @@ return (
       </div>
     ))}
     </div>
+
+
+
+
+
+
+
+    <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+    <h2 style={{ backgroundColor: '#ff5022' }} className="my-10 mb-4 text-5xl tracking-tight font-extrabold">
+      Planos com fibra para sua empresa
+    </h2>
+    <p className="mb-5 font-light text-gray-500 sm:text-xl">
+      Conheça os nossos planos para empresas como a sua!
+    </p>
+  </div>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {plansFibra.map((plan, index) => (
+      <div
+        key={index}
+        className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-xl xl:p-8 transform transition-all duration-300 ease-in-out hover:scale-105"
+      >
+        <div className="mb-2">
+          <span style={{ backgroundColor: '#ff5022' }} className="text-white text-xs mr-2 font-bold px-2.5 py-0.5">
+            Oferta
+          </span>
+        </div>
+        <h3 style={{ backgroundColor: '#ff5022' }} className="mb-4 text-2xl font-bold text-white -blue-900">{plan.title}</h3>
+
+        {/* Lista de funcionalidades */}
+        <ul role="list" className="mb-8 space-y-4 text-left flex-grow">
+          {plan.features.map((feature, idx) => (
+            <li key={idx} className="flex items-center space-x-3 hover:bg-gray-200">
+              <svg
+                className="flex-shrink-0 w-5 h-5 text-green-500"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+              <span>{feature}</span>
+            </li>
+          ))}
+          
+          <div className="flex flex-col items-center">
+          <span className="font-semibold my-2">Aplicativos incluídos</span>
+          <div className="grid grid-cols-3 gap-4">
+            {plan.apps?.map((app, idx) => (
+              <img
+                key={idx}
+                alt="App logo"
+                className="w-[48px] h-[48px]"
+                src={app}
+              />
+            ))}
+          </div>
+        </div>          
+        </ul>
+
+
+        
+
+        {/* <div className="flex justify-center items-baseline my-8">
+          <span style={{ color: '#2242d4' }} className="mr-2 text-3xl font-extrabold ">R$ {plan.price}</span>
+          <span className="text-gray-500">/mês</span>
+        </div> */}
+        <a
+          style={{ backgroundColor: '#2242d4' }}
+          href={plan.link}
+          className="self-center text-white hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        >
+          Assine Já
+        </a>
+      </div>
+    ))}
+    </div>
+    
     {/* <div className=" items-start m-16">
       <ul className="list-disc pl-5">
         <li>
