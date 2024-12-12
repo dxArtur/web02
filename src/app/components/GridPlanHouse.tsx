@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { services } from '../../../public/services'
 
-const PlanCardHouse = ({ plan }) => {
+const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({ name: '', description: '', logo: '' });
 
-  const openModal = (name, type, logo) => {
+  const openModal = (name:string, type:keyof IServices, logo:string) => {
     const description = getServiceDescription(name, type);
     setModalContent({ name, description, logo });
     setModalOpen(true);
@@ -16,12 +16,12 @@ const PlanCardHouse = ({ plan }) => {
     setModalContent({ name: '', description: '', logo: '' });
   };
 
-  const getServiceDescription = (name, type) => {
-    const service = services[0][type].find(service => service.name === name);
-    return service ? service[name] : 'Descrição não encontrada.';
+  const getServiceDescription = (name:string, type: keyof IServices) => {
+    const service = services[0][type].find((service: IService) => service.name === name);
+    return service ? service.description : 'Descrição não encontrada.';
   };
 
-  const getPromotionColor = (type) => {
+  const getPromotionColor = (type:string) => {
     switch (type) {
       case 'economic':
         return '#28a745'; // Verde
@@ -59,7 +59,7 @@ const PlanCardHouse = ({ plan }) => {
         {plan.services.streaming && (
           <div
             className="flex flex-col items-center flex-grow cursor-pointer"
-            onClick={() => openModal(plan.services.streaming.name, 'streamings', plan.services.streaming.logo)}
+            onClick={() => openModal(plan.services.streaming!.name, 'streamings', plan.services.streaming!.logo)}
           >
             <span className="font-semibold my-2">Streaming incluído</span>
             <img
