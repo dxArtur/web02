@@ -37,11 +37,13 @@ export default function Navbar () {
           <div className="hidden sm:flex space-x-8 justify-center px-4 py-2">
             <a
               href="https://wa.me/558584848836?text=Ol%C3%A1%2C+Gostaria+de+contratar+o+serviço."
-              className="text-white hover:bg-orange-600 px-3 py-2 rounded-md text-lg font-bold"
+              className="text-white hover:bg-orange-600 px-3 py-2 rounded-md text-lg font-bold border border-white hover:border-0"
+
             >
-              Contratar pelo Whatsapp
+              Conheça nossos planos
             </a>
           </div>
+
         </div>
       </div>
 
