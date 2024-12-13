@@ -1,27 +1,9 @@
-import { useEffect, useState } from 'react';
-import { services } from '../../../public/services'
+import { useState } from 'react';
+import { services } from '../../../public/services';
 
-const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
-  const [modalOpen, setModalOpen] = useState(false)
-  const [modalContent, setModalContent] = useState({ name: '', description: '', logo: '' })
-  const [timeLeft, setTimeLeft] = useState(7200); // 1 hour in seconds
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft(prevTime => {
-                if (prevTime <= 1) {
-                    return 3600; // Reset to 1 hour
-                } return prevTime - 1;
-            });
-        }, 1000); return () => clearInterval(timer);
-    },[])
-
-  const formatTime = (seconds: number) => {
-    const h = Math.floor(seconds / 3600)
-    const m = Math.floor((seconds % 3600) / 60)
-    const s = seconds % 60;
-    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
-}
+const GridPlanCorp = ({ plan }:{plan:IPlanCorp}) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({ name: '', description: '', logo: '' });
 
   const openModal = (name:string, type:keyof IServices, logo:string) => {
     const description = getServiceDescription(name, type);
@@ -35,42 +17,62 @@ const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
   };
 
   const getServiceDescription = (name:string, type: keyof IServices) => {
-    const service = services[0][type].find((service: IService) => service.name === name);
+    const service = services[0][type].find(service => service.name === name);
     return service ? service.description : 'Descrição não encontrada.';
   };
 
   const getPromotionColor = (type:string) => {
-      switch (type) {
-        case 'economic':
-            return '#28a745'; // Verde
-        case 'entertainment':
-            return '#dc3545'; // Vermelho
-        case 'all':
-            return '#007bff'; // Azul
-        default:
-            return '#ff5022';
-      }
+    switch (type) {
+      case 'economic':
+        return '#28a745'; // Verde
+      case 'entertainment':
+        return '#dc3545'; // Vermelho
+      case 'all':
+        return '#007bff'; // Azul
+      default:
+        return '#ff5022'; // Cor padrão
+    }
   };
 
   return (
     <>
       <div
         className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-xl xl:p-8 transform transition-all duration-300 ease-in-out hover:scale-105 border-b-4"
-        style={{borderBottomColor:getPromotionColor(plan.type) }}
+        style={{ borderBottomColor: getPromotionColor(plan.type) }}
       >
-        <span className="text-xl font-medium text-gray-500 mb-4 border-b-4"
-            style={{borderBottomColor:getPromotionColor(plan.type) }}
-        >{plan.badge}</span>
-        <h3 style={{ backgroundColor: getPromotionColor(plan.type) }} className="mb-4 text-xl font-bold text-white px-4">PROMOÇÃO {plan.title}</h3>
-
-        <div className="mb-4 text-lg font-semibold text-red-600"> Promoção termina em: {formatTime(timeLeft)} </div>
+        <span
+          className="text-xl font-medium text-gray-500 mb-4 border-b-4"
+          style={{ borderBottomColor: getPromotionColor(plan.type) }}
+        >
+          {plan.badge}
+        </span>
+        <h3
+          style={{ backgroundColor: getPromotionColor(plan.type) }}
+          className="mb-4 text-xl font-bold text-white px-4"
+        >
+          PROMOÇÃO {plan.title}
+        </h3>
 
         {/* Lista de funcionalidades com ícones SVG */}
         <ul role="list" className="mb-8 space-y-4 text-left flex-grow">
           {plan.features.map((feature, idx) => (
             <li key={idx} className="flex items-center space-x-3 hover:bg-gray-200">
-                <img src={feature.icon} alt="" />
-                <span>{feature.name}</span>
+                {feature.icon ? (
+                    <img src={feature.icon}
+                    alt={feature.name}
+                    className="flex-shrink-0 w-5 h-5" /> 
+                ) : ( 
+                    <svg className="flex-shrink-0 w-5 h-5 text-green-500"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg" >
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd" >
+                        </path>
+                    </svg>
+                )}
+              {/* <img src={feature.icon} alt="" /> */}
+              <span>{feature.name}</span>
             </li>
           ))}
         </ul>
@@ -83,8 +85,8 @@ const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
           >
             <span className="font-semibold my-2">Streaming incluído</span>
             <img
-              alt={plan.services.streaming!.name + " logo"}
-              className="w-[150px] mt-1"
+              alt={plan.services.streaming!.name + "logo"}
+              className="w-[100px] mt-1"
               src={plan.services.streaming.logo}
             />
           </div>
@@ -93,7 +95,7 @@ const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
         {/* Apps inclusos */}
         <div className="flex flex-col items-center">
           <span className="font-semibold my-2">Aplicativos incluídos</span>
-          <div className="flex gap-1">
+          <div className="grid grid-cols-3 gap-4">
             {plan.services.apps.map((app, idx) => (
               <img
                 key={idx}
@@ -106,20 +108,11 @@ const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
           </div>
         </div>
 
-        {/* Preço e botão */}
-        <div className="flex flex-col justify-center items-center my-8">
-          <span className="text-xl font-medium text-gray-500 self-start ml-12">Apenas</span>
-          <div className="flex items-baseline">
-            <span style={{ color: '#2242d4' }} className="mr-2 text-3xl font-extrabold">R$ {plan.price}</span>
-            <span className="text-gray-500">/mês</span>
-          </div>
-        </div>
-
         <a
           href={plan.link}
-          className="bg-custom-blue self-center text-white hover:bg-custom-orange font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          className="bg-custom-blue self-center text-white hover:bg-custom-orange font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4"
         >
-          Assine Já
+          Consulte nossos valores
         </a>
       </div>
 
@@ -146,5 +139,4 @@ const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
   );
 };
 
-export default PlanCardHouse;
-
+export default GridPlanCorp
