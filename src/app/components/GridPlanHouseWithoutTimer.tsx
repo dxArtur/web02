@@ -1,27 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { services } from '../../../public/services'
 
-const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
+const PlanCardHouseWithoutTimer = ({ plan}: {plan: IPlanHouse}) => {
   const [modalOpen, setModalOpen] = useState(false)
   const [modalContent, setModalContent] = useState({ name: '', description: '', logo: '' })
-  const [timeLeft, setTimeLeft] = useState(7200); // 1 hour in seconds
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft(prevTime => {
-                if (prevTime <= 1) {
-                    return 3600; // Reset to 1 hour
-                } return prevTime - 1;
-            });
-        }, 1000); return () => clearInterval(timer);
-    },[])
-
-  const formatTime = (seconds: number) => {
-    const h = Math.floor(seconds / 3600)
-    const m = Math.floor((seconds % 3600) / 60)
-    const s = seconds % 60;
-    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
-}
+    
 
   const openModal = (name:string, type:keyof IServices, logo:string) => {
     const description = getServiceDescription(name, type);
@@ -63,8 +47,6 @@ const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
         >{plan.badge}</span>
         <h3 style={{ backgroundColor: getPromotionColor(plan.type) }} className="mb-4 text-xl font-bold text-white px-4">PROMOÇÃO {plan.title}</h3>
 
-        <div className="mb-4 text-lg font-semibold text-red-600"> Promoção termina em: {formatTime(timeLeft)} </div>
-
         {/* Lista de funcionalidades com ícones SVG */}
         <ul role="list" className="mb-8 space-y-4 text-left flex-grow">
           {plan.features.map((feature, idx) => (
@@ -74,7 +56,7 @@ const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
             </li>
           ))}
         </ul>
-
+        
         <span className="text-sm font-medium text-gray-500 mb-4 border-b-4">Clique nos ícones para ver as vantagens.</span>
 
         {/* Verificação de Streaming */}
@@ -148,5 +130,5 @@ const PlanCardHouse = ({ plan}: {plan: IPlanHouse}) => {
   );
 };
 
-export default PlanCardHouse;
+export default PlanCardHouseWithoutTimer;
 

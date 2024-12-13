@@ -6,6 +6,7 @@ import { plansFibra } from "../../../public/fibra";
 import TextAlternator from "../components/TextAlternator";
 import PlanCardHouse from "../components/GridPlanHouse";
 import GridPlanCorp from "../components/GridPlanCorp"
+import PlanCardHouseWithoutTimer from "../components/GridPlanHouseWithoutTimer";
 
 export default function PlansPage() {
   return (
@@ -32,7 +33,7 @@ export default function PlansPage() {
               <TextAlternator />
             </div>
             <button className="flex justify-center lg:justify-start">
-              <a href="#" className="inline-block font-semibold bg-custom-orange text-white py-2 px-4 rounded-lg hover:bg-custom-blue transition duration-300 ease-in-out">Veja nossas ofertas</a>
+              <a href="#plans" className="inline-block font-semibold bg-custom-orange text-white py-2 px-4 rounded-lg hover:bg-custom-blue transition duration-300 ease-in-out">Veja nossas ofertas</a>
             </button>
           </div>
 
@@ -41,7 +42,7 @@ export default function PlansPage() {
       </div>
 
 
-      <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+      <div id='plans' className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
         <h2 style={{ backgroundColor: '#ff5022' }} className="my-10 mb-4 text-5xl tracking-tight font-extrabold">
           Planos residênciais em promoção
         </h2>
@@ -67,7 +68,7 @@ export default function PlansPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {plansHouseII.map((plan, index) => (
-          <PlanCardHouse key={index} plan={plan} />
+          <PlanCardHouseWithoutTimer key={index} plan={plan} />
         ))}
       </div>
 
