@@ -68,7 +68,7 @@ const PlanCardHouseWithoutTimer = ({ plan}: {plan: IPlanHouse}) => {
             <span className="font-semibold my-2">Streaming incluído</span>
             <img
               alt={plan.services.streaming!.name + " logo"}
-              className="w-[150px] mt-1"
+              className="w-[120px] mt-1"
               src={plan.services.streaming.logo}
             />
           </div>

@@ -77,6 +77,8 @@ const GridPlanCorp = ({ plan }:{plan:IPlanCorp}) => {
           ))}
         </ul>
 
+        <span className="text-sm font-medium text-gray-500 mb-4 border-b-4">Clique nos ícones para ver as vantagens.</span>
+
         {/* Verificação de Streaming */}
         {plan.services.streaming && (
           <div
